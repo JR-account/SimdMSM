@@ -1,18 +1,15 @@
-## Build
+##  AVX-MSM
 
-### MSM
+The main codes of `AVX-MSM` is in the `AVX-MSM/demo/381/` directory.
 
-To run the code:
+**No multi-threading:**
+-  `pip_ifma` is MSM implementation using AVX512-IFMA in $\mathbb{G}_{1}$ group.
+-  `pair_ifma` is MSM implementation using AVX512-IFMA in both ($\mathbb{G}_{1}$, $\mathbb{G}_{2}$) group.
 
-```shell
-cd demo/MSM
-make thread
- ./build/test_pip_threads 
-```
+**With multi-threading:**
+-  `pip_threads` is MSM implementation using AVX512-IFMA in $\mathbb{G}_{1}$ group.
+-  `pair_threads` is MSM implementation using AVX512-IFMA in both ($\mathbb{G}_{1}$, $\mathbb{G}_{2}$) group.
 
-If there is a segment fault, then
-
-```shell
-ulimit -s "栈的大小"
-```
+**Others:**
+- `bench.py` is a python script for large-scale data testing.
 

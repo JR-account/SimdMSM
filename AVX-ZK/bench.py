@@ -13,7 +13,7 @@ def deal_result(bench_res):
             return True, s[s.index('['):]
     return False, None
 
-def bench_pip_ifma(size1=1000, size2=100):
+def bench_zksnark(size1=1000, size2=100):
     
     try:
         
@@ -39,11 +39,11 @@ def bench_pip_ifma(size1=1000, size2=100):
 if __name__ == '__main__':
     df = pd.DataFrame(columns=["SIZE", "Correct", "Time"])
     # df_best = pd.DataFrame(columns=["NUM", "WSIZE", "OLD", "NEW", "SPEEDUP"])for
-    # bench_pip_ifma(1000, 100)
+    # bench_zksnark(1000, 100)
     for num in range(23, 25):
         input1 = (1 << num)
         input2 = (1 << (num-2))
-        run_time = bench_pip_ifma(input1, input2)
+        run_time = bench_zksnark(input1, input2)
         run_time.insert(0, num)
         print(run_time)
         df.loc[len(df)] = run_time
