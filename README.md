@@ -1,6 +1,14 @@
-# AVX-ZK
+# SimdMSM
 
-This source code is an efficient implemetation of MSM and zkSNARK using AVX-512IFMA.
+This source code is an efficient implemetation of MSM and zkSNARK using AVX-512IFMA. It is the artifact of the paper **SimdMSM: SIMD-accelerated Multi-Scalar Multiplication Framework for zkSNARKs** accepted to TCHES 2025. 
+
+
+## Overview
+
+There are three subfolders included in this repository:
+- `AVX-MSM` : the MSM implementation instantiated with AVX512-IFMA engine based on [the RELIC library](https://github.com/relic-toolkit/relic). The specific implementation code can be found in the `AVX-MSM/demo/381/` directory. The AVX512-IFMA engine implementation is based on [Cheng et al.’s work](https://github.com/ulhaocheng/avxcsidh?tab=readme-ov-file).
+- `AVX-ZK` : integrating AVX-MSM implementation into [the libsnark library](https://github.com/scipr-lab/libsnark). The part of `r1cs_gg_ppzksnark`, commonly known as the famous Groth16 protocol, is changed to using new AVX-MSM.
+- `jsnark` : a tool for evaluating the performance of AVX-ZK under different real-world workloads.
 
 ## Requirement
 
@@ -13,7 +21,7 @@ This source code is an efficient implemetation of MSM and zkSNARK using AVX-512I
 
 ### AVX-MSM
 
- Target the `relic `library.
+ Target the `SimdMSM` library.
 
 ```shell
 $ cd  AVX-MSM
