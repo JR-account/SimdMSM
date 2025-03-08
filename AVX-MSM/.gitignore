@@ -1,9 +1,10 @@
 relic-all.c
 target*
 *.o
-*.txt
 *.csv
-
+pair.txt
+point.txt
+scalar.txt
 */x64/
 *.vcxproj*
 .vs/
