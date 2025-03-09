@@ -7,5 +7,4 @@ bin
 .project
 .settings
 .classpath
-*.arith
-!JsnarkCirctuitBuilder/auction_10.arith
+

@@ -24,6 +24,7 @@ $ sudo apt-get install build-essential cmake git libgmp3-dev libprocps3-dev pyth
   ```
 ### For jsnark
 
+You can consult instructions in [jsnark](https://github.com/akosba/jsnark).
 - JDK 8 (Higher versions are also expected to work)
 - Junit 4
 - BouncyCastle library
@@ -157,7 +158,7 @@ The output format of AVX-ZK follows the format of the `libsnark` library. Below 
 ### Running and Testing AVX-ZK by JsnarkCircuitBuilder
 
 ### Building
-This part is similar to AVX-ZK.
+Return to the main directory `SimdMSM/`. The first part is similar to AVX-ZK.
 ```shell
 $ cd jsnark/libsnark
 $ mkdir build && cd build && cmake ..
@@ -168,7 +169,7 @@ $ cp ../../../AVX-MSM/demo/381/build/libmsm.a ../../../AVX-MSM/demo/381/target/l
 $ make
 ```
 
-To compile the JsnarkCircuitBuilder project via command line, from the jsnark directory:
+To compile the JsnarkCircuitBuilder project via command line, from the `SimdMSM/jsnark` directory:
 
 ```shell
 $ cd jsnark
