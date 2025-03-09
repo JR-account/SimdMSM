@@ -5,14 +5,14 @@
 #include <sys/time.h>
 
 #ifndef WNUM
-// #define WNUM 15
+#define WNUM 15
 #endif
 #ifndef WMBITS
-// #define WMBITS 3
+#define WMBITS 3
 #endif
 
 #ifndef NBENCHS 
-// #define NBENCHS 1
+#define NBENCHS 1
 #endif
 
 uint64_t clockMS()

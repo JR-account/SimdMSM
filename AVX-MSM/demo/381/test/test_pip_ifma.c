@@ -4,14 +4,14 @@
 #include <math.h>
 
 #ifndef WNUM
-// #define WNUM 21
+#define WNUM 16
 #endif
 #ifndef WMBITS
-// #define WMBITS 14
+#define WMBITS 10
 #endif
 
 #ifndef NBENCHS 
-// #define NBENCHS 10
+#define NBENCHS 1
 #endif
 
 int main()
