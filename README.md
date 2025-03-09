@@ -122,9 +122,9 @@ $ cd AVX-ZK
 $ mkdir build && cd build && cmake ..
 ```
 
-Copy the `libmsm.a` and `librelic_s.a`.to libsnark/build/depends/libff/libff.
+Copy the `libmsm.a` and `librelic_s.a`.to AVX-ZK/build/depends/libff/libff.
 ```shell
-$ cp ../../AVX-MSM/demo/381/build/libmsm.a ../../AVX-MSM/demo/381/target/lib/librelic_s.a ./libsnark/build/depends/libff/libff
+$ cp ../../AVX-MSM/demo/381/build/libmsm.a ../../AVX-MSM/demo/381/target/lib/librelic_s.a ./depends/libff/libff
 ```
 
 Then, to compile the library, run this within the `build` directory:
@@ -139,9 +139,21 @@ Run the profiling of AVX-ZK.
 
 ```shell
 $ make profile_r1cs_gg_ppzksnark
-$ ./libsnark/profile_r1cs_gg_ppzksnark 1000  100 bytes
+$ ./libsnark/profile_r1cs_gg_ppzksnark 65536 8192 bytes
 ```
 
+You can also use the Python script to perform batch benching.
+```shell
+$ cd AVX-ZK
+$ python bench.py
+```
+### Output example
+The output format of AVX-ZK follows the format of the `libsnark` library. Below is an example of the output from the python script:
+```c
+// 15 means size of 2^15; True means result is correct
+// 1.2709s is the execution time of our AVX-ZK
+[15, True, '[1.2709s x0.97]\t(19.6462s x1.00 from start)']
+```
 ### Running and Testing AVX-ZK by JsnarkCircuitBuilder
 
 ### Building
@@ -152,7 +164,7 @@ $ mkdir build && cd build && cmake ..
 ```
 Copy the `libmsm.a` and `librelic_s.a`.to libsnark/build/depends/libff/libff. Then build.
 ```shell
-$ cp ../../../AVX-MSM/demo/381/build/libmsm.a ../../../AVX-MSM/demo/381/target/lib/librelic_s.a ./libsnark/build/depends/libff/libff
+$ cp ../../../AVX-MSM/demo/381/build/libmsm.a ../../../AVX-MSM/demo/381/target/lib/librelic_s.a ./depends/libff/libff
 $ make
 ```
 

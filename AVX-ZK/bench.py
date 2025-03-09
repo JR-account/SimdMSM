@@ -40,7 +40,7 @@ if __name__ == '__main__':
     df = pd.DataFrame(columns=["SIZE", "Correct", "Time"])
     # df_best = pd.DataFrame(columns=["NUM", "WSIZE", "OLD", "NEW", "SPEEDUP"])for
     # bench_zksnark(1000, 100)
-    for num in range(23, 25):
+    for num in range(15, 16):
         input1 = (1 << num)
         input2 = (1 << (num-2))
         run_time = bench_zksnark(input1, input2)

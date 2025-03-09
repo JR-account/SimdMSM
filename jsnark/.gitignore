@@ -9,4 +9,3 @@ bin
 .classpath
 *.arith
 !JsnarkCirctuitBuilder/auction_10.arith
-*.in
