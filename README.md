@@ -17,6 +17,7 @@ There are three subfolders included in this repository:
 - gcc version 11.4.0 
 - cmake 3.22.1
 - support AVX512-IFMA instruction sets
+- pandas(for python script)
 
 ### For AVX-ZK
 ```
@@ -48,7 +49,7 @@ $ chmod +x ../../preset/x64-pbc-bls12-381.sh
 $ sed -i 's/\r$//' ../../preset/x64-pbc-bls12-381.sh
 ```
 ### Using
-Run AVX-MSM. The benchmark's data size `num` and window size `WSIZE` can be modified in the file `/test/test_pip_ifma.c`.
+Run AVX-MSM. The benchmark's data size `WNUM` and window size `WMBITS` can be modified in the file `/test/test_pip_ifma.c`.
 
 ```shell
 $ mkdir build
@@ -56,24 +57,24 @@ $ make ifma
 $ ./build/test_pip_ifma
 ```
 
-Run AVX-pair-MSM. The benchmark's data size `num` and window size `WSIZE` can be modified in the file `/test/test_pair_ifma.c`.
+Run AVX-pair-MSM. The benchmark's data size `WNUM` and window size `WMBITS` can be modified in the file `/test/test_pair_ifma.c`.
 
 ```shell
 $ make pair_ifma
 $ ./build/test_pair_ifma
 ```
 
-Run AVX-MSM(muti-threads). The benchmark's data size `num` and window size `WSIZE` can be modified in the file `/test/test_pip_threads.c`.
+Run AVX-MSM(muti-threads). The benchmark's data size `WNUM` and window size `WMBITS` can be modified in the file `/test/test_pip_threads.c`.
 
 ```shell
-$ make ifma
+$ make thread
 $ ./build/test_pip_threads
 ```
 
-Run AVX-pair-MSM(muti-threads). The benchmark's data size `num` and window size `WSIZE` can be modified in the file `/test/test_pair_threads.c`.
+Run AVX-pair-MSM(muti-threads). The benchmark's data size `WNUM` and window size `WMBITS` can be modified in the file `/test/test_pair_threads.c`.
 
 ```shell
-$ make pair_ifma
+$ make pair_thread
 $ ./build/test_pair_threads
 ```
 
@@ -155,7 +156,19 @@ The output format of AVX-ZK follows the format of the `libsnark` library. Below 
 // 1.2709s is the execution time of our AVX-ZK
 [15, True, '[1.2709s x0.97]\t(19.6462s x1.00 from start)']
 ```
-### Running and Testing AVX-ZK by JsnarkCircuitBuilder
+### Switching between single and multi-core
+
+In file `SimdMSM/AVX-ZK/libsnark/zk_proof_systems/ppzksnark/r1cs_gg_ppzksnark/r1cs_gg_ppzksnark.tcc`, the proof generation function is `r1cs_gg_ppzksnark_prover`. Specifically, functions containing `multi_exp` are responsible for multi-scalar multiplication. You can modify their template parameters to enable multi-threading or not.
+```c++
+//single-core
+multi_exp_method_pip_avx
+multi_exp_method_pair_avx
+//multi-core
+multi_exp_method_pip_avx_threads
+multi_exp_method_pair_avx_threads
+```
+
+## Running and Testing AVX-ZK by JsnarkCircuitBuilder
 
 ### Building
 Return to the main directory `SimdMSM/`. The first part is similar to AVX-ZK.
