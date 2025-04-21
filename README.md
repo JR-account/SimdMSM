@@ -167,6 +167,7 @@ multi_exp_method_pair_avx
 multi_exp_method_pip_avx_threads
 multi_exp_method_pair_avx_threads
 ```
+Specifically, in the proof generation function, replace `multi_exp_method_pip_avx` with `multi_exp_method_pip_avx_threads` in the computation of evaluation_At, evaluation_Ht, and evaluation_Lt. For the computation of evaluation_Bt, replace `multi_exp_method_pair_avx` with `multi_exp_method_pair_avx_threads`. After modifying the code, repeat the above Building and Using steps in the AVX-ZK part.
 
 ## Running and Testing AVX-ZK by JsnarkCircuitBuilder
 
